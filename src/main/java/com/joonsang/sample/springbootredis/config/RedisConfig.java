@@ -58,7 +58,7 @@ public class RedisConfig {
         config.setHostName(HOSTNAME);
         config.setPort(PORT);
         config.setDatabase(DATABASE);
-        config.setPassword(PASSWORD);
+        if(!(PASSWORD.isBlank() || PASSWORD.isEmpty())) config.setPassword(PASSWORD);
 
         LettuceClientConfiguration clientConfig = LettuceClientConfiguration.builder()
             .commandTimeout(Duration.ofMillis(TIMEOUT))
